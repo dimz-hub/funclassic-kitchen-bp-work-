@@ -29,7 +29,7 @@ const Footer = () => {
         <div className='flex items-center w-[95%] ml-[30px] gap-[15px] mx-auto mt-[17px]'> 
             <a href="#" className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaFacebook size={30}/></a>
             <a href="#" className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaInstagram size={30}/></a>
-            <a href="#" className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaXTwitter size={30}/></a>
+            <a href="#" className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaXTwitter size={27}/></a>
         </div>
       </div>
 

@@ -8,6 +8,7 @@ const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const whatsappUrl = "https://wa.me/12365127552";
+    const webUrl = "https://www.instagram.com/funclassic_kitchen/";
   return (
     /* Added pb-[30px] to give space and 'block' to prevent inline gaps */
     <footer className='bg-black text-white pt-[20px] pb-[40px] w-full block border-none outline-none relative'>
@@ -32,8 +33,8 @@ const Footer = () => {
         
         <div className='flex items-center w-[95%] ml-[30px] gap-[15px] mx-auto mt-[17px]'> 
             {/* <a href="#" className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaFacebook size={30}/></a> */}
-            <a href="#" className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaInstagram size={30}/></a>
-            <a href={whatsappUrl} className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaWhatsapp size={27}/></a>
+            <a href={webUrl} target='_blank' className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaInstagram size={30}/></a>
+            <a href={whatsappUrl} target='_blank' className="bg-[#DE9151]/40 p-2 rounded-[50%]"><FaWhatsapp size={27}/></a>
         </div>
       </div>
       </div>

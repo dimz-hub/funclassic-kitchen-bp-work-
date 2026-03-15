@@ -52,8 +52,8 @@ export default function FoodCard({ data }) {
 
   return (
     <>
-      <div className="rounded-2xl shadow-md hover:shadow-xl transition duration-300 cursor-pointer overflow-hidden md:w-[370px] bg-white border border-gray-100">
-        <div className="relative h-[180px] w-full" onClick={() => setOpen(true)}>
+      <div className={`rounded-2xl shadow-md hover:shadow-xl ${data?.category === 'protein' ? 'xl:h-[70vh]'  : ''} transition duration-300  overflow-hidden md:w-[370px] lg:w-[300px] xl:w-[370px] bg-white border border-gray-100`}>
+        <div className={`relative h-[180px]  w-full `} onClick={() => setOpen(true)}>
           <Image src={data?.image || '/placeholder.jpg'} alt={data?.name} fill className="object-cover" />
         </div>
 
@@ -105,7 +105,7 @@ export default function FoodCard({ data }) {
 
           <div className="flex items-center justify-between mt-4">
             <p className="font-semibold text-orange-500 text-[23px]">${data?.price}</p>
-            <button onClick={handleAdd} className="p-2 px-4 flex items-center gap-2 rounded-lg bg-orange-500 text-white font-bold">
+            <button onClick={handleAdd} className="p-2 px-4 cursor-pointer flex items-center gap-2 rounded-lg bg-orange-500 text-white font-bold">
               Add <FiShoppingCart size={19} />
             </button>
           </div>
@@ -117,7 +117,8 @@ export default function FoodCard({ data }) {
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4" onClick={() => setOpen(false)}>
            <div className="bg-white rounded-2xl max-w-md w-full p-6 relative" onClick={e => e.stopPropagation()}>
               <button onClick={() => setOpen(false)} className="absolute right-4 top-4 text-gray-500">✕</button>
-              <h2 className="text-2xl font-bold">{data?.name}</h2>
+              <h2 className="text-2xl font-bold capitalize text-orange-500">{data?.name}</h2>
+              <Image  src={data.image} width={200} height={150} alt="food-img" className=" py-2 rounded-2xl h-[250px] w-[100%] object-cover"/>
               <p className="mt-2 text-gray-600">{data?.fullDescription}</p>
            </div>
         </div>

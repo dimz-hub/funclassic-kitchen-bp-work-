@@ -1,6 +1,8 @@
-'use client'
+"use client"
+
 import React, { useState, useEffect } from 'react'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 const backgrounds = [
   '/paste3.jpg',
@@ -8,8 +10,23 @@ const backgrounds = [
   '/back2.png',
 ]
 
+const largeBackgrounds = [
+  '/back2.png',
+  '/efo1.jpg',
+  '/juices.jpg',
+]
+
 const BackGroundCarousel = () => {
   const [index, setIndex] = useState(0)
+
+  // Smooth scroll function for the "Our Menu" button
+  const scrollToMenu = (e) => {
+    e.preventDefault();
+    const menuSection = document.getElementById('menu');
+    if (menuSection) {
+      menuSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -19,9 +36,6 @@ const BackGroundCarousel = () => {
   }, [])
 
   return (
-    /* 1. Changed to h-screen to avoid the "dynamic" resizing of dvh.
-      2. Removed the negative margin hacks for cleaner layout.
-    */
     <div className="relative h-screen w-full overflow-hidden bg-black isolate">
       
       {/* Background layers */}
@@ -29,7 +43,7 @@ const BackGroundCarousel = () => {
         <div
           key={bg}
           className={clsx(
-            'absolute inset-0 transition-opacity duration-1000 ease-in-out',
+            'absolute inset-0 transition-opacity duration-1000 ease-in-out md:hidden',
             i === index ? 'opacity-100' : 'opacity-0'
           )}
           style={{ 
@@ -37,9 +51,23 @@ const BackGroundCarousel = () => {
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover', 
-            /* IMPORTANT: Using 100% height and width. 
-               We use 'absolute' and 'inset-0' to lock it to the parent.
-            */
+            height: '101%',
+            width: '100%',
+          }}
+        />
+      ))}
+      {largeBackgrounds.map((bg, i) => (
+        <div
+          key={bg}
+          className={clsx(
+            'absolute inset-0 transition-opacity duration-1000 ease-in-out hidden md:block',
+            i === index ? 'opacity-100' : 'opacity-0'
+          )}
+          style={{ 
+            backgroundImage: `url(${bg})`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover', 
             height: '101%',
             width: '100%',
           }}
@@ -69,11 +97,8 @@ const BackGroundCarousel = () => {
       </div>
 
       {/* Bottom Left Card */}
-      {/* Changed bottom-[10vh] to a fixed px or rem to prevent 
-         it from jumping when the address bar moves.
-      */}
-      <div className="uppercase px-[30px] absolute z-30 bottom-40 left-0">
-        <div className="h-[100px] rounded-t-[20px] p-3 text-white uppercase w-[80vw] lg:w-[40vw] bg-black text-[17px]">
+      <div className="uppercase px-[30px] absolute z-30 bottom-40 xl:bottom-40 md:bottom-15 x left-0">
+        <div className="h-[100px] rounded-t-[20px] p-3 text-white uppercase w-[80vw] lg:w-[40vw] md:w-[65vw]   bg-black text-[17px]">
           <div className="flex items-center gap-[20px]">
             <img
               src="/res-logo1.png"
@@ -83,14 +108,17 @@ const BackGroundCarousel = () => {
             <p>Crafting moments, one bite at a time!</p>
           </div>
         </div>
-        <div>
-          <div className="lg:w-[40vw] rounded-b-[20px] w-[80vw] cursor-pointer text-black p-3 bg-[#FFD45A] font-semibold text-center text-[18px]">
-            Our Menu
-          </div>
+        
+        {/* Menu Button with Smooth Scroll */}
+        <div 
+          onClick={scrollToMenu}
+          className="lg:w-[40vw] md:w-[65vw] rounded-b-[20px] w-[80vw] cursor-pointer text-black p-3 bg-[#FFD45A] font-semibold text-center text-[18px] hover:bg-[#ffc824] transition-colors"
+        >
+          Our Menu
         </div>
       </div>
     </div>
   )
 }
 
-export default BackGroundCarousel
+export default BackGroundCarousel;

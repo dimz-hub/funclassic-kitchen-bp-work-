@@ -102,7 +102,7 @@ const Welcome = () => {
       <div ref={scrollTargetRef} />
 
       {/* CARDS SECTION */}
-      <div className='w-[90%] mx-auto flex flex-col gap-[20px] mt-8 min-h-screen'>
+      <div className='w-[90%] mx-auto flex flex-col md:grid-cols-2 lg:grid-cols-3 md:grid gap-[20px] mt-8 min-h-screen'>
         {filteredFood.length > 0 ? (
           filteredFood.map((data) => (
             data && data.id && <FoodCard key={data.id} data={data} />

@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Funclassic Kitchen",
-  description: "Wre  offers a wide variety of delicious nigerian dishes.",
+  description: "We  offer a wide variety of delicious nigerian dishes.",
 };
 
 export default function RootLayout({ children }) {
